@@ -1,0 +1,19 @@
+.MODEL SMALL
+.STACK 100
+.DATA
+    NUM1 5
+    NUM2 ?
+
+.CODE
+
+.MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+
+    MOV AL, NUM1
+    MOV BL, AL
+
+    MOV AH, 4CH
+    INT 21H
+MAIN ENDP
+END MAIN

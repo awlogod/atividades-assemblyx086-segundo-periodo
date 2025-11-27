@@ -1,0 +1,42 @@
+TITLE Imprimir ?
+.MODEL SMALL
+.STACK 100H
+.DATA
+    QUANT DB "Quantidade: $"
+.CODE
+ MAIN PROC 
+
+    MOV AX, @DATA
+    MOV DS, AX
+
+    MOV AH, 9
+    LEA DX, QUANT
+    INT 21H
+
+    MOV AH, 1
+    INT 21H
+
+    AND AL, 0FH
+    MOV CL, AL
+
+    MOV AH, 2
+    MOV DL, 10
+    INT 21H
+
+    CALL IMPRESSAO     
+
+    MOV AH, 4Ch
+    INT 21H
+ MAIN ENDP 
+ 
+ IMPRESSAO PROC
+    ;IMPRIME ?
+    ;ENTRADA VALOR DE CX
+    ;SAÍDA NA IMPRESSÃO
+    ;MOV AH, 2
+    MOV DL, '?'
+    VOLTA:
+    INT 21H
+    LOOP VOLTA
+ IMPRESSAO ENDP
+END MAIN
